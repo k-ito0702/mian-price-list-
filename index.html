@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="MIAN価格検索">
+    <meta name="apple-mobile-web-app-title" content="MIAN価格">
     <title>MIAN BEAUTY 価格検索完全版</title>
     
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3461/3461285.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/ios-filled/512/5B727C/price-tag-euro.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
@@ -23,7 +23,6 @@
         .price-card:active { transform: scale(0.96); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        /* ロゴのカラー #5B727C をベースにしたデザイン */
         .major-tab-active { color: #5B727C; font-weight: 900; border-bottom: 3px solid #5B727C; }
         .major-tab-inactive { color: #94a3b8; font-weight: 700; }
     </style>
@@ -108,7 +107,7 @@
     </main>
 
     <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 text-center shadow-lg">
-        <p class="text-[10px] text-slate-400 font-black tracking-widest uppercase italic">2026.02 MIAN BEAUTY Sales Support Tool</p>
+        <p class="text-[10px] text-slate-400 font-black tracking-widest uppercase italic tracking-normal">2026.02 MIAN BEAUTY Sales Support Tool</p>
     </div>
 </div>
 
@@ -119,15 +118,13 @@
     const MAJOR_CATEGORIES = ['ヘアケア', 'トリートメント', 'スタイリング', 'レジェンド', 'スキンケア'];
 
     const PRODUCT_DATA = [
-        // --- ヘアケア (CE3) ---
+        // --- 1回目のデータをすべて保持 ---
         { major: 'ヘアケア', brand: 'CE3', name: "CE3 シャンプー", capacity: "800mLリフィル", price: 1400 },
         { major: 'ヘアケア', brand: 'CE3', name: "CE3 シャンプー店販用", capacity: "1,000mL", price: 2400 },
         { major: 'ヘアケア', brand: 'CE3', name: "CE3 コンディショナー", capacity: "2,000 g x2", price: 3400 },
         { major: 'ヘアケア', brand: 'CE3', name: "CE3 トリートメント", capacity: "750gリフィル", price: 1500 },
         { major: 'ヘアケア', brand: 'CE3', name: "CE3 トリートメント店販用", capacity: "1,000g", price: 2600 },
         { major: 'ヘアケア', brand: 'CE3', name: "CE3 共通詰替えボトル(識別シール付)", capacity: "1,000mL/g用", price: 600 },
-
-        // --- ヘアケア (エイジケア・エイジキュア) ---
         { major: 'ヘアケア', brand: 'エイジケア', name: "クレイシャンプー", capacity: "290mL", price: 1600 },
         { major: 'ヘアケア', brand: 'エイジケア', name: "クレイシャンプー リフィル", capacity: "550mL", price: 2500 },
         { major: 'ヘアケア', brand: 'エイジケア', name: "クレイヘアパック", capacity: "210g", price: 1600 },
@@ -135,8 +132,6 @@
         { major: 'ヘアケア', brand: 'エイジケア', name: "薬用エイジキュアLC育毛剤", capacity: "150mL", price: 4000 },
         { major: 'ヘアケア', brand: 'エイジケア', name: "クレイシャンプーリフィル専用カートリッジ", capacity: "専用", price: 930 },
         { major: 'ヘアケア', brand: 'エイジケア', name: "クレイヘアパックリフィル専用カートリッジ", capacity: "専用", price: 930 },
-
-        // --- ヘアケア (ルッチヘアケア) ---
         { major: 'ヘアケア', brand: 'ルッチ', name: "ルッチ メルティフルウォッシュ", capacity: "245mL", price: 1600 },
         { major: 'ヘアケア', brand: 'ルッチ', name: "ルッチ メルティフルウォッシュ ラージボトル", capacity: "610mL", price: 2800 },
         { major: 'ヘアケア', brand: 'ルッチ', name: "ルッチ メルティフルウォッシュ リフィル", capacity: "550mL", price: 2300 },
@@ -145,8 +140,6 @@
         { major: 'ヘアケア', brand: 'ルッチ', name: "ルッチ メルティフルパック リフィル", capacity: "550g", price: 2500 },
         { major: 'ヘアケア', brand: 'ルッチ', name: "ルッチ メルティフルウォーター", capacity: "150mL", price: 2000 },
         { major: 'ヘアケア', brand: 'ルッチ', name: "ルッチ メルティフルウォーター リフィル", capacity: "300mL", price: 3000 },
-
-        // --- ヘアケア (シーズントリップ) ---
         { major: 'ヘアケア', brand: 'シーズントリップ', name: "スーパークールシャンプー", capacity: "300mL", price: 1800 },
         { major: 'ヘアケア', brand: 'シーズントリップ', name: "スーパークールシャンプー ラージボトル", capacity: "600mL", price: 3200 },
         { major: 'ヘアケア', brand: 'シーズントリップ', name: "スーパークールシャンプー リフィル", capacity: "550mL", price: 2700 },
@@ -160,13 +153,9 @@
         { major: 'ヘアケア', brand: 'シーズントリップ', name: "スキャルプポッピングスプレー", capacity: "95g", price: 1200 },
         { major: 'ヘアケア', brand: 'シーズントリップ', name: "ウォッシャブルフォーム", capacity: "320g", price: 2800 },
         { major: 'ヘアケア', brand: 'シーズントリップ', name: "フィンランドスタイル モイスチュアクリーム", capacity: "80g", price: 1400 },
-
-        // --- ヘアケア (サフナ・トーヒ) ---
         { major: 'ヘアケア', brand: 'サフナ・トーヒ', name: "サフナ ボリュームメイクフォーム", capacity: "180g", price: 1500 },
         { major: 'ヘアケア', brand: 'サフナ・トーヒ', name: "トーヒエッセンス", capacity: "200mL", price: 1700 },
         { major: 'ヘアケア', brand: 'サフナ・トーヒ', name: "トーヒエッセンス エア", capacity: "225g", price: 1700 },
-
-        // --- ヘアケア (ピュアファクター) ---
         { major: 'ヘアケア', brand: 'ピュアファクター', name: "ピュアファクター シャンプー", capacity: "300mL", price: 1700 },
         { major: 'ヘアケア', brand: 'ピュアファクター', name: "ピュアファクター シャンプー ラージボトル", capacity: "600mL", price: 3000 },
         { major: 'ヘアケア', brand: 'ピュアファクター', name: "ピュアファクター シャンプー リフィル", capacity: "580mL", price: 2600 },
@@ -179,16 +168,12 @@
         { major: 'ヘアケア', brand: 'ピュアファクター', name: "ウォータートリートメント ミニ", capacity: "25g", price: 400 },
         { major: 'ヘアケア', brand: 'ピュアファクター', name: "ウォータートリートメントモイスト", capacity: "145g", price: 1600 },
         { major: 'ヘアケア', brand: 'ピュアファクター', name: "ウォータートリートメントモイストミニ", capacity: "25g", price: 400 },
-
-        // --- ヘアケア (ピュアファクター アシッド) ---
         { major: 'ヘアケア', brand: 'アシッド', name: "ピュアファクター アシッド シャンプー", capacity: "300mL", price: 1700 },
         { major: 'ヘアケア', brand: 'アシッド', name: "ピュアファクター アシッド シャンプー ラージボトル", capacity: "600mL", price: 3000 },
         { major: 'ヘアケア', brand: 'アシッド', name: "ピュアファクター アシッド シャンプー リフィル", capacity: "580mL", price: 2600 },
         { major: 'ヘアケア', brand: 'アシッド', name: "ピュアファクター アシッド トリートメント", capacity: "230g", price: 1700 },
         { major: 'ヘアケア', brand: 'アシッド', name: "ピュアファクター アシッド トリートメント ラージボトル", capacity: "590g", price: 3000 },
         { major: 'ヘアケア', brand: 'アシッド', name: "ピュアファクター アシッド トリートメント リフィル", capacity: "550g", price: 2600 },
-
-        // --- ヘアケア (ディープエレメント) ---
         { major: 'ヘアケア', brand: 'ディープエレメント', name: "SVシャンプー", capacity: "300mL", price: 1700 },
         { major: 'ヘアケア', brand: 'ディープエレメント', name: "SVシャンプー ラージボトル", capacity: "600mL", price: 3000 },
         { major: 'ヘアケア', brand: 'ディープエレメント', name: "SVシャンプー リフィル", capacity: "580mL", price: 2600 },
@@ -204,8 +189,6 @@
         { major: 'ヘアケア', brand: 'ディープエレメント', name: "MAトリートメント リフィル", capacity: "550g", price: 2600 },
         { major: 'ヘアケア', brand: 'ディープエレメント', name: "MA CMCコンク", capacity: "90g", price: 2000 },
         { major: 'ヘアケア', brand: 'ディープエレメント', name: "MIANヘアケア専用カートリッジ", capacity: "580mL 550g用", price: 900 },
-
-        // --- ヘアケア (ランドケア) ---
         { major: 'ヘアケア', brand: 'ランドケア', name: "ランドケア エッセンスソープ", capacity: "300mL", price: 5600 },
         { major: 'ヘアケア', brand: 'ランドケア', name: "ランドケア エッセンスソープ リフィル", capacity: "600mL", price: 8400 },
         { major: 'ヘアケア', brand: 'ランドケア', name: "ハイドレーションマスク", capacity: "230g", price: 4300 },
@@ -215,8 +198,6 @@
         { major: 'ヘアケア', brand: 'ランドケア', name: "エッセンスローション", capacity: "200mL", price: 2200 },
         { major: 'ヘアケア', brand: 'ランドケア', name: "エッセンスローション リフィル", capacity: "500mL", price: 3800 },
         { major: 'ヘアケア', brand: 'ランドケア', name: "専用カートリッジボトル (識別シール付)", capacity: "600mL/600g用", price: 1000 },
-
-        // --- トリートメント (モルティナ) ---
         { major: 'トリートメント', brand: 'モルティナ', name: "スムースウォッシュ ソフト", capacity: "210mL", price: 2400 },
         { major: 'トリートメント', brand: 'モルティナ', name: "スムースウォッシュ ソフト リフィル", capacity: "360mL", price: 3300 },
         { major: 'トリートメント', brand: 'モルティナ', name: "スムースウォッシュ ソフト カートリッジ付", capacity: "550mL", price: 5400 },
@@ -245,27 +226,19 @@
         { major: 'トリートメント', brand: 'モルティナ', name: "ピュアオイル リフィル", capacity: "75mL", price: 2400 },
         { major: 'トリートメント', brand: 'モルティナ', name: "スキャルプセラム", capacity: "120mL", price: 2800 },
         { major: 'トリートメント', brand: 'モルティナ', name: "スキャルプセラム リフィル", capacity: "200mL", price: 3500 },
-
-        // --- トリートメント (アクアクチュール) ---
         { major: 'トリートメント', brand: 'アクアクチュール', name: "アクアクチュール CMCミスト", capacity: "150mL", price: 1800 },
         { major: 'トリートメント', brand: 'アクアクチュール', name: "モあリュクス", capacity: "50g", price: 1000 },
-
-        // --- スタイリング (モノーク) ---
         { major: 'スタイリング', brand: 'モノーク', name: "モノーク オイル", capacity: "60mL", price: 3400 },
         { major: 'スタイリング', brand: 'モノーク', name: "モノーク オイルジェリー", capacity: "80g", price: 3000 },
         { major: 'スタイリング', brand: 'モノーク', name: "モノーク バーム", capacity: "45g", price: 3400 },
         { major: 'スタイリング', brand: 'モノーク', name: "モノーク ウォータージェル", capacity: "200mL", price: 3300 },
         { major: 'スタイリング', brand: 'モノーク', name: "モノーク バームワックス", capacity: "45g", price: 3200 },
-        
-        // --- スタイリング (ルッチ) ---
         { major: 'スタイリング', brand: 'ルッチ', name: "ルッチ フラッフィラテ", capacity: "150mL", price: 1800 },
         { major: 'スタイリング', brand: 'ルッチ', name: "ルッチ メルティシロップ", capacity: "100mL", price: 2000 },
         { major: 'スタイリング', brand: 'ルッチ', name: "ルッチ シフォンミルク", capacity: "95g", price: 1800 },
         { major: 'スタイリング', brand: 'ルッチ', name: "ルッチ バウンシルクリーム", capacity: "80g", price: 1500 },
         { major: 'スタイリング', brand: 'ルッチ', name: "ルッチ カーリーホイップ", capacity: "150mL", price: 1800 },
         { major: 'スタイリング', brand: 'ルッチ', name: "ルッチ スリーキィクリーム", capacity: "100g", price: 1500 },
-
-        // --- スタイリング (ノフィ) ---
         { major: 'スタイリング', brand: 'ノフィ', name: "ノフィ フォルムメイクスプレー", capacity: "180g", price: 1300 },
         { major: 'スタイリング', brand: 'ノフィ', name: "ノフィ ホールドスプレー", capacity: "180g", price: 1300 },
         { major: 'スタイリング', brand: 'ノフィ', name: "ノフィ グロススプレー", capacity: "180g", price: 1300 },
@@ -278,8 +251,6 @@
         { major: 'スタイリング', brand: 'ノフィ', name: "ノフィ ハードジェル リフィル", capacity: "360g", price: 2200 },
         { major: 'スタイリング', brand: 'ノフィ', name: "ノフィ リペアオイル", capacity: "95mL", price: 2000 },
         { major: 'スタイリング', brand: 'ノフィ', name: "ノフィ リペアエマルジョン", capacity: "95g", price: 2000 },
-
-        // --- レジェンド ---
         { major: 'レジェンド', brand: 'エメラルド', name: "エメラルド", capacity: "275g(400mL)", price: 1500 },
         { major: 'レジェンド', brand: 'エメラルド', name: "エメラルド ベビー", capacity: "58g(85mL)", price: 550 },
         { major: 'レジェンド', brand: 'エメラルド', name: "エメラルド エクセレント", capacity: "240g(350mL)", price: 1500 },
@@ -290,8 +261,6 @@
         { major: 'レジェンド', brand: 'ルミナ S', name: "ルミナ S", capacity: "50g", price: 1200 },
         { major: 'レジェンド', brand: 'ルミナトーン', name: "ルミナトーン", capacity: "127g(170mL)", price: 1700 },
         { major: 'レジェンド', brand: 'ルミナトーン', name: "ルミナトーン", capacity: "225g(300mL)", price: 2450 },
-
-        // --- スキンケア ---
         { major: 'スキンケア', brand: 'モチュレ', name: "アスタリノ", capacity: "120g", price: 3000 },
         { major: 'スキンケア', brand: 'モチュレ', name: "アスタリノ リフィル", capacity: "500g", price: 8800 },
         { major: 'スキンケア', brand: 'モチュレ', name: "プラセリカ", capacity: "150g", price: 3000 },
